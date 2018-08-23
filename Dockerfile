@@ -30,7 +30,5 @@ ARG MOODLE_CURRENT_BRANCH=master
 RUN git checkout $MOODLE_CURRENT_BRANCH
 
 WORKDIR /var/www/html/
-COPY ./scripts/entrypoint.sh / 
-COPY ./scripts/moodle-config.php /config.php
-COPY ./scripts/php.ini /php.ini
-ENTRYPOINT  /entrypoint.sh
+COPY . /
+ENTRYPOINT ["/scripts/entrypoint.sh"]
