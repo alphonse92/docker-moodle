@@ -30,5 +30,5 @@ ARG MOODLE_CURRENT_BRANCH=master
 RUN git checkout $MOODLE_CURRENT_BRANCH
 
 WORKDIR /var/www/html/
-COPY . /
-ENTRYPOINT ["/scripts/entrypoint.sh"]
+COPY ./scripts /
+ENTRYPOINT ["bash","/entrypoint.sh"]

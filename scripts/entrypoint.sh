@@ -1,14 +1,7 @@
 #!/bin/bash
 set -e
-function p(){
-    echo " "
-    echo "--------------------------------"
-    echo $1
-    echo "--------------------------------"
-    echo " "
-}
-p "Environment Vars"
-printenv
+echo "Environment Vars"
+printenv 
 cd $APACHE_WWW
 
 MOODLE_CONF_NAME=config.php
@@ -24,7 +17,9 @@ echo $SECRET_CONFIG_PATH
 echo $MOODLE_DEFAULT_CONF
 echo $MOODLE_CONFIG_FILE
 
-p "Validate if $PWD is an empty directory"
+ls / -la
+
+echo "Validating if $PWD is an empty directory"
 if [ -z "$(ls -A)"];then
     if [[ -z "${AVOID_COPY_FILES}" ]]; then
         rm -rf $APACHE_WWW
@@ -45,7 +40,7 @@ fi
 
 #si la variable de entorno no existe busca en secrets, si no existe error.
 #si existe la variable de entorno entonces usa el archivo default
-p "Setup config file"
+echo "Setup config file"
 echo "finding for DB_HOST"
 if [[ -z "${DB_HOST}" ]]; then
     echo "DB_HOST envar doesnt exist. Finding config file in secrets"
@@ -63,6 +58,6 @@ else
     cp $PHP_INI_FILE_PATH $PHP_CONF_PATH/$PHP_INI_FILE
 fi
 
-p "Starting apache"
+echo "Starting apache"
 apache2-foreground
 
