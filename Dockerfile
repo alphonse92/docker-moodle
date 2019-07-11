@@ -6,7 +6,7 @@ WORKDIR /var/www/html/
 RUN rm -rf ./* && apt-get update -y && apt-get install -y apt-utils  ca-certificates git\
     mysql-client pwgen python-setuptools curl unzip libcurl4-openssl-dev postfix \
     libfreetype6-dev  libjpeg62-turbo-dev libmcrypt-dev libpng-dev libpq-dev \ 
-    libxml2 libxml2-dev libldb-dev libldap2-dev
+    libxml2 libxml2-dev libldb-dev libldap2-dev libzip-dev 
 
 RUN apt-get upgrade -y && \
     docker-php-ext-install \
