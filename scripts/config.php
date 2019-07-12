@@ -26,21 +26,21 @@ unset($CFG);
 global $CFG;
 $CFG = new stdClass();
 
-$CFG->dbtype    = getenv('DB_CONNECTOR','mysqli');
+$CFG->dbtype    = getenv('DB_CONNECTOR');
 $CFG->dblibrary = 'native';
-$CFG->dbhost    = getenv('DB_HOST',"localhost");
-$CFG->dbname    = getenv('DB_NAME',"moodle");
+$CFG->dbhost    = getenv('DB_HOST');
+$CFG->dbname    = getenv('DB_NAME');
 $CFG->dbuser    = getenv("DB_USERNAME");
 $CFG->dbpass    = getenv("DB_PASSWORD");
-$CFG->prefix    = getenv("DB_PREFIX","mdl_");
+$CFG->prefix    = getenv("DB_PREFIX");
 $CFG->dboptions = array (
   'dbpersist' => 0,
-  'dbport' => getenv("DB_PORT",3306),
+  'dbport' => getenv("DB_PORT"),
   'dbsocket' => '',
   'dbcollation' => 'utf8mb4_general_ci',
 );
 
-$CFG->wwwroot   = getenv('MOODLE_URL','http://localhost:8080');
+$CFG->wwwroot   = getenv('MOODLE_URL');
 $CFG->dataroot  = '/var/moodle_data';
 $CFG->admin     = 'admin';
 $CFG->directorypermissions = 0777;

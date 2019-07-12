@@ -17,11 +17,12 @@ echo $SECRET_CONFIG_PATH
 echo $MOODLE_DEFAULT_CONF
 echo $MOODLE_CONFIG_FILE
 
-ls / -la
+echo "\nCurrent files in $PWD"
+ls -A
 
-echo "Validating if $PWD is an empty directory"
-if [ -z "$(ls -A)"];then
-    if [[ -z "${AVOID_COPY_FILES}" ]]; then
+echo "\nValidating if $PWD is an empty directory"
+if [ -z "$(ls -A)" ]; then
+    if [ -n "${AVOID_COPY_FILES}" ];then
         rm -rf $APACHE_WWW
         ln -s $APACHE_WWW /tmp/moodle/
         chown -R www-data:www-data /tmp/moodle/
@@ -42,7 +43,7 @@ fi
 #si existe la variable de entorno entonces usa el archivo default
 echo "Setup config file"
 echo "finding for DB_HOST"
-if [[ -z "${DB_HOST}" ]]; then
+if [ -z "${DB_HOST}" ]; then
     echo "DB_HOST envar doesnt exist. Finding config file in secrets"
     echo "Finding config file in $SECRET_CONFIG_PATH"
     if [ -f "$SECRET_CONFIG_PATH" ]; then
