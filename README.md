@@ -22,4 +22,10 @@ This repo contains the dockerfile and the required scripts to build it.
 7. DB_PREFIX: database table prefix
 8. MOODLE_URL: moodle FQDN
 
+## Persist
+
+You need to mount two volumes to persist the moodle data with plugins:
+
+1. /path/to/folder/in/host/moodle_data:/var/moodle_data
+2. /path/to/folder/in/host/moodle:/var/www/html
 
