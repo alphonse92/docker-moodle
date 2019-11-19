@@ -21,14 +21,15 @@ echo "\nCurrent files in $PWD"
 ls -A
 
 echo "\nValidating if $PWD is an empty directory"
-if [ -z "$(ls -A)" ]; then
+if [ ! -f "version.php" ]; then
     if [ -n "${AVOID_COPY_FILES}" ];then
-        rm -rf $APACHE_WWW
+        rm -rf /var/www/html/*
         ln -s $APACHE_WWW /tmp/moodle/
         chown -R www-data:www-data /tmp/moodle/
     else
         echo "Doesnt exist files in $PWD"
         echo "Copy moodle files ..."
+        rm -rf ./
         cp -R /tmp/moodle/* $APACHE_WWW
         chown -R www-data:www-data $APACHE_WWW
         printf "[OK]"
@@ -67,7 +68,8 @@ then
     ls -la ${MOODLE_DATA}
 else
     echo "Recreating moodle data"
-    mkdir -p MOODLE_DATA
+    mkdir -p ${MOODLE_DATA}
+    chown -R www-data:www-data ${MOODLE_DATA}
 fi
 
 echo "Starting apache"
