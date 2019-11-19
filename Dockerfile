@@ -43,7 +43,7 @@ ARG MOODLE_CURRENT_BRANCH=master
 RUN git checkout $MOODLE_CURRENT_BRANCH
 
 WORKDIR /var/www/html/
-RUN mkdir /var/moodle_data && chown www-data /var/moodle_data
+RUN mkdir /var/moodle_data && chown www-data /var/moodle_data && chown -R www-data /var/www/html/
 COPY ./scripts /
 
 
