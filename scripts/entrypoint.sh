@@ -29,7 +29,7 @@ if [ ! -f "version.php" ]; then
     else
         echo "Doesnt exist files in $PWD"
         echo "Copy moodle files ..."
-        rm -rf ./
+        rm -rf ./*
         cp -R /tmp/moodle/* $APACHE_WWW
         chown -R www-data:www-data $APACHE_WWW
         printf "[OK]"
