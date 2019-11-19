@@ -59,6 +59,17 @@ else
     cp $PHP_INI_FILE_PATH $PHP_CONF_PATH/$PHP_INI_FILE
 fi
 
+
+if [ -d ${MOODLE_DATA} ]; 
+then
+    echo "Moodle data folder exist."
+    echo "Getting files:"
+    ls -la ${MOODLE_DATA}
+else
+    echo "Recreating moodle data"
+    mkdir -p MOODLE_DATA
+fi
+
 echo "Starting apache"
 apache2-foreground
 
