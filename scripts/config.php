@@ -20,6 +20,15 @@ $CFG->dboptions = array (
 
 $CFG->wwwroot   = getenv('MOODLE_URL');
 $CFG->dataroot  = getenv('MOODLE_DATA');;
+// Enable when setting up advanced reverse proxy load balancing configurations,
+// it may be also necessary to enable this when using port forwarding.
+$isReverseProxy = getenv('REVERSE_PROXY') === 'true' ;
+$CFG->reverseproxy =  $isReverseProxy;
+
+// Enable when using external SSL appliance for performance reasons.
+// Please note that site may be accessible via https: or https:, but not both!
+$isSslProxy = getenv('SSL_PROXY') === 'true' ;
+$CFG->sslproxy = $isSslProxy;
 $CFG->admin     = 'admin';
 $CFG->directorypermissions = 0777;
 require_once(__DIR__ . '/lib/setup.php');
