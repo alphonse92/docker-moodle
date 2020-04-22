@@ -21,6 +21,7 @@ This repo contains the dockerfile and the required scripts to build it.
 6. DB_PASSWORD: moodle database user password
 7. DB_PREFIX: database table prefix
 8. MOODLE_URL: moodle FQDN
+9. CACERT: path to your ca-certificate. Use it if some code of your moodle will request to a custom server with SSL and you need to trust it.
 
 ## Persist
 
