@@ -72,6 +72,17 @@ else
     chown -R www-data:www-data ${MOODLE_DATA}
 fi
 
+if [ -z "${CACERT}" ]; then
+    echo 'cacert file not found'
+else
+    if [ -f "${CACERT}" ]; then
+        echo "cacert file was found, setting cacert";
+        cp $CACERT $MOODLE_DATA
+        echo "curl.cainfo = \"${CACERT}\" "  >> /usr/local/etc/php/php.ini
+    fi;
+
+fi;
+
 echo "Starting apache"
 apache2-foreground
 
